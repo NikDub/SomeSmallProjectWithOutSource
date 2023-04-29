@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="18190353abe04addba145c9d27b8022e" Name="Diagram1">
+        <EntityTypeShape EntityType="Mat_shopModel.Buy" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Mat_shopModel.Buy_Details" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Mat_shopModel.Employee" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Mat_shopModel.Manufacturer" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="Mat_shopModel.Materials" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Mat_shopModel.Measurements" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Mat_shopModel.Post" Width="1.5" PointX="1.5" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="Mat_shopModel.Provider" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Mat_shopModel.Supply" Width="1.5" PointX="8.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Mat_shopModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Mat_shopModel.Type" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Mat_shopModel.Unit" Width="1.5" PointX="6" PointY="7.25" IsExpanded="true" />
+        <AssociationConnector Association="Mat_shopModel.FK_Buy_Details_Buy" ManuallyRouted="false" />
+        <AssociationConnector Association="Mat_shopModel.FK_Buy_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="Mat_shopModel.FK_Buy_Details_Materials" ManuallyRouted="false" />
+        <AssociationConnector Association="Mat_shopModel.FK_Employee_Post" ManuallyRouted="false" />
+        <AssociationConnector Association="Mat_shopModel.FK_Materials_Manufacturer" ManuallyRouted="false" />
+        <AssociationConnector Association="Mat_shopModel.FK_Materials_Measurements" ManuallyRouted="false" />
+        <AssociationConnector Association="Mat_shopModel.FK_Materials_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="Mat_shopModel.FK_Supply_Materials" ManuallyRouted="false" />
+        <AssociationConnector Association="Mat_shopModel.FK_Supply_Provider" ManuallyRouted="false" />
+        <AssociationConnector Association="Mat_shopModel.FK_Supply_Unit" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

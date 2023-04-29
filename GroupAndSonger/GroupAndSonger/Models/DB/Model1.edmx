@@ -1,0 +1,1023 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище subdcursa4Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="authors">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Song" Type="int" />
+          <Property Name="ID_Executor" Type="int" />
+          <Property Name="role_stat" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="buy_tick">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Tour" Type="int" />
+          <Property Name="ID_Place" Type="int" />
+          <Property Name="Date_beg" Type="date" />
+          <Property Name="Date_ov" Type="date" />
+          <Property Name="SummPR_tick" Type="int" />
+          <Property Name="Price_tick" Type="int" />
+          <Property Name="Count_tick" Type="int" />
+        </EntityType>
+        <EntityType Name="country">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="executor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="20" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="20" />
+          <Property Name="Birth_date" Type="date" />
+        </EntityType>
+        <EntityType Name="group_executor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Executor" Type="int" />
+          <Property Name="ID_Group" Type="int" />
+          <Property Name="Date_arr" Type="date" />
+          <Property Name="Date_depart" Type="date" />
+          <Property Name="Role_stat" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="groups">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_User" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" />
+          <Property Name="Year" Type="int" />
+          <Property Name="ID_Country" Type="int" />
+          <Property Name="Place" Type="int" />
+        </EntityType>
+        <EntityType Name="places">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_loc" Type="nvarchar" MaxLength="20" />
+          <Property Name="Name_place" Type="nvarchar" MaxLength="20" />
+          <Property Name="Price_tick" Type="int" />
+          <Property Name="Capacity" Type="int" />
+          <Property Name="ID_Country" Type="int" />
+        </EntityType>
+        <EntityType Name="repertoires">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Song" Type="int" />
+          <Property Name="ID_Group" Type="int" />
+          <Property Name="date_beg" Type="date" />
+        </EntityType>
+        <EntityType Name="roles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="songs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" />
+          <Property Name="Year" Type="int" />
+        </EntityType>
+        <EntityType Name="tour_songs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Tour" Type="int" />
+          <Property Name="ID_Song" Type="int" />
+        </EntityType>
+        <EntityType Name="tours">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Group" Type="int" />
+          <Property Name="Date_beg" Type="date" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="20" />
+          <Property Name="Password" Type="nvarchar(max)" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="20" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="20" />
+          <Property Name="ID_Role" Type="int" />
+        </EntityType>
+        <Association Name="FK__authors__ID_Exec__33D4B598">
+          <End Role="executor" Type="Self.executor" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="authors" Type="Self.authors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="executor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="authors">
+              <PropertyRef Name="ID_Executor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__authors__ID_Song__32E0915F">
+          <End Role="songs" Type="Self.songs" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="authors" Type="Self.authors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="songs">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="authors">
+              <PropertyRef Name="ID_Song" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__buy_tick__ID_Pla__44FF419A">
+          <End Role="places" Type="Self.places" Multiplicity="0..1" />
+          <End Role="buy_tick" Type="Self.buy_tick" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="places">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="buy_tick">
+              <PropertyRef Name="ID_Place" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__buy_tick__ID_Tou__440B1D61">
+          <End Role="tours" Type="Self.tours" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="buy_tick" Type="Self.buy_tick" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tours">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="buy_tick">
+              <PropertyRef Name="ID_Tour" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__group_exe__ID_Ex__36B12243">
+          <End Role="executor" Type="Self.executor" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="group_executor" Type="Self.group_executor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="executor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="group_executor">
+              <PropertyRef Name="ID_Executor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__group_exe__ID_Gr__37A5467C">
+          <End Role="groups" Type="Self.groups" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="group_executor" Type="Self.group_executor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groups">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="group_executor">
+              <PropertyRef Name="ID_Group" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__groups__ID_Count__2B3F6F97">
+          <End Role="country" Type="Self.country" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="groups" Type="Self.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="country">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="ID_Country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__groups__ID_User__2C3393D0">
+          <End Role="users" Type="Self.users" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="groups" Type="Self.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="ID_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__places__ID_Count__412EB0B6">
+          <End Role="country" Type="Self.country" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="places" Type="Self.places" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="country">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="places">
+              <PropertyRef Name="ID_Country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__repertoir__ID_Gr__3B75D760">
+          <End Role="groups" Type="Self.groups" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="repertoires" Type="Self.repertoires" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groups">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="repertoires">
+              <PropertyRef Name="ID_Group" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__repertoir__ID_So__3A81B327">
+          <End Role="songs" Type="Self.songs" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="repertoires" Type="Self.repertoires" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="songs">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="repertoires">
+              <PropertyRef Name="ID_Song" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tour_song__ID_So__48CFD27E">
+          <End Role="songs" Type="Self.songs" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tour_songs" Type="Self.tour_songs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="songs">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tour_songs">
+              <PropertyRef Name="ID_Song" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tour_song__ID_To__47DBAE45">
+          <End Role="tours" Type="Self.tours" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tour_songs" Type="Self.tour_songs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tours">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tour_songs">
+              <PropertyRef Name="ID_Tour" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tours__ID_Group__3E52440B">
+          <End Role="groups" Type="Self.groups" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tours" Type="Self.tours" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groups">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tours">
+              <PropertyRef Name="ID_Group" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__users__ID_Role__286302EC">
+          <End Role="roles" Type="Self.roles" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="users" Type="Self.users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="ID_Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище subdcursa4ModelContainer">
+          <EntitySet Name="authors" EntityType="Self.authors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="buy_tick" EntityType="Self.buy_tick" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="country" EntityType="Self.country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="executor" EntityType="Self.executor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="group_executor" EntityType="Self.group_executor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="groups" EntityType="Self.groups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="places" EntityType="Self.places" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="repertoires" EntityType="Self.repertoires" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="songs" EntityType="Self.songs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tour_songs" EntityType="Self.tour_songs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tours" EntityType="Self.tours" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__authors__ID_Exec__33D4B598" Association="Self.FK__authors__ID_Exec__33D4B598">
+            <End Role="executor" EntitySet="executor" />
+            <End Role="authors" EntitySet="authors" />
+          </AssociationSet>
+          <AssociationSet Name="FK__authors__ID_Song__32E0915F" Association="Self.FK__authors__ID_Song__32E0915F">
+            <End Role="songs" EntitySet="songs" />
+            <End Role="authors" EntitySet="authors" />
+          </AssociationSet>
+          <AssociationSet Name="FK__buy_tick__ID_Pla__44FF419A" Association="Self.FK__buy_tick__ID_Pla__44FF419A">
+            <End Role="places" EntitySet="places" />
+            <End Role="buy_tick" EntitySet="buy_tick" />
+          </AssociationSet>
+          <AssociationSet Name="FK__buy_tick__ID_Tou__440B1D61" Association="Self.FK__buy_tick__ID_Tou__440B1D61">
+            <End Role="tours" EntitySet="tours" />
+            <End Role="buy_tick" EntitySet="buy_tick" />
+          </AssociationSet>
+          <AssociationSet Name="FK__group_exe__ID_Ex__36B12243" Association="Self.FK__group_exe__ID_Ex__36B12243">
+            <End Role="executor" EntitySet="executor" />
+            <End Role="group_executor" EntitySet="group_executor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__group_exe__ID_Gr__37A5467C" Association="Self.FK__group_exe__ID_Gr__37A5467C">
+            <End Role="groups" EntitySet="groups" />
+            <End Role="group_executor" EntitySet="group_executor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__groups__ID_Count__2B3F6F97" Association="Self.FK__groups__ID_Count__2B3F6F97">
+            <End Role="country" EntitySet="country" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__groups__ID_User__2C3393D0" Association="Self.FK__groups__ID_User__2C3393D0">
+            <End Role="users" EntitySet="users" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__places__ID_Count__412EB0B6" Association="Self.FK__places__ID_Count__412EB0B6">
+            <End Role="country" EntitySet="country" />
+            <End Role="places" EntitySet="places" />
+          </AssociationSet>
+          <AssociationSet Name="FK__repertoir__ID_Gr__3B75D760" Association="Self.FK__repertoir__ID_Gr__3B75D760">
+            <End Role="groups" EntitySet="groups" />
+            <End Role="repertoires" EntitySet="repertoires" />
+          </AssociationSet>
+          <AssociationSet Name="FK__repertoir__ID_So__3A81B327" Association="Self.FK__repertoir__ID_So__3A81B327">
+            <End Role="songs" EntitySet="songs" />
+            <End Role="repertoires" EntitySet="repertoires" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tour_song__ID_So__48CFD27E" Association="Self.FK__tour_song__ID_So__48CFD27E">
+            <End Role="songs" EntitySet="songs" />
+            <End Role="tour_songs" EntitySet="tour_songs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tour_song__ID_To__47DBAE45" Association="Self.FK__tour_song__ID_To__47DBAE45">
+            <End Role="tours" EntitySet="tours" />
+            <End Role="tour_songs" EntitySet="tour_songs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tours__ID_Group__3E52440B" Association="Self.FK__tours__ID_Group__3E52440B">
+            <End Role="groups" EntitySet="groups" />
+            <End Role="tours" EntitySet="tours" />
+          </AssociationSet>
+          <AssociationSet Name="FK__users__ID_Role__286302EC" Association="Self.FK__users__ID_Role__286302EC">
+            <End Role="roles" EntitySet="roles" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="subdcursa4Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="authors">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Song" Type="Int32" />
+          <Property Name="ID_Executor" Type="Int32" />
+          <Property Name="role_stat" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="executor" Relationship="Self.FK__authors__ID_Exec__33D4B598" FromRole="authors" ToRole="executor" />
+          <NavigationProperty Name="songs" Relationship="Self.FK__authors__ID_Song__32E0915F" FromRole="authors" ToRole="songs" />
+        </EntityType>
+        <EntityType Name="buy_tick">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Tour" Type="Int32" />
+          <Property Name="ID_Place" Type="Int32" />
+          <Property Name="Date_beg" Type="DateTime" Precision="0" />
+          <Property Name="Date_ov" Type="DateTime" Precision="0" />
+          <Property Name="SummPR_tick" Type="Int32" />
+          <Property Name="Price_tick" Type="Int32" />
+          <Property Name="Count_tick" Type="Int32" />
+          <NavigationProperty Name="places" Relationship="Self.FK__buy_tick__ID_Pla__44FF419A" FromRole="buy_tick" ToRole="places" />
+          <NavigationProperty Name="tours" Relationship="Self.FK__buy_tick__ID_Tou__440B1D61" FromRole="buy_tick" ToRole="tours" />
+        </EntityType>
+        <EntityType Name="country">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="groups" Relationship="Self.FK__groups__ID_Count__2B3F6F97" FromRole="country" ToRole="groups" />
+          <NavigationProperty Name="places" Relationship="Self.FK__places__ID_Count__412EB0B6" FromRole="country" ToRole="places" />
+        </EntityType>
+        <EntityType Name="executor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Surname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Birth_date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="authors" Relationship="Self.FK__authors__ID_Exec__33D4B598" FromRole="executor" ToRole="authors" />
+          <NavigationProperty Name="group_executor" Relationship="Self.FK__group_exe__ID_Ex__36B12243" FromRole="executor" ToRole="group_executor" />
+        </EntityType>
+        <EntityType Name="group_executor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Executor" Type="Int32" />
+          <Property Name="ID_Group" Type="Int32" />
+          <Property Name="Date_arr" Type="DateTime" Precision="0" />
+          <Property Name="Date_depart" Type="DateTime" Precision="0" />
+          <Property Name="Role_stat" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="executor" Relationship="Self.FK__group_exe__ID_Ex__36B12243" FromRole="group_executor" ToRole="executor" />
+          <NavigationProperty Name="groups" Relationship="Self.FK__group_exe__ID_Gr__37A5467C" FromRole="group_executor" ToRole="groups" />
+        </EntityType>
+        <EntityType Name="groups">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_User" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="ID_Country" Type="Int32" />
+          <Property Name="Place" Type="Int32" />
+          <NavigationProperty Name="country" Relationship="Self.FK__groups__ID_Count__2B3F6F97" FromRole="groups" ToRole="country" />
+          <NavigationProperty Name="group_executor" Relationship="Self.FK__group_exe__ID_Gr__37A5467C" FromRole="groups" ToRole="group_executor" />
+          <NavigationProperty Name="users" Relationship="Self.FK__groups__ID_User__2C3393D0" FromRole="groups" ToRole="users" />
+          <NavigationProperty Name="repertoires" Relationship="Self.FK__repertoir__ID_Gr__3B75D760" FromRole="groups" ToRole="repertoires" />
+          <NavigationProperty Name="tours" Relationship="Self.FK__tours__ID_Group__3E52440B" FromRole="groups" ToRole="tours" />
+        </EntityType>
+        <EntityType Name="places">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_loc" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Name_place" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Price_tick" Type="Int32" />
+          <Property Name="Capacity" Type="Int32" />
+          <Property Name="ID_Country" Type="Int32" />
+          <NavigationProperty Name="buy_tick" Relationship="Self.FK__buy_tick__ID_Pla__44FF419A" FromRole="places" ToRole="buy_tick" />
+          <NavigationProperty Name="country" Relationship="Self.FK__places__ID_Count__412EB0B6" FromRole="places" ToRole="country" />
+        </EntityType>
+        <EntityType Name="repertoires">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Song" Type="Int32" />
+          <Property Name="ID_Group" Type="Int32" />
+          <Property Name="date_beg" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="groups" Relationship="Self.FK__repertoir__ID_Gr__3B75D760" FromRole="repertoires" ToRole="groups" />
+          <NavigationProperty Name="songs" Relationship="Self.FK__repertoir__ID_So__3A81B327" FromRole="repertoires" ToRole="songs" />
+        </EntityType>
+        <EntityType Name="roles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="users" Relationship="Self.FK__users__ID_Role__286302EC" FromRole="roles" ToRole="users" />
+        </EntityType>
+        <EntityType Name="songs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Year" Type="Int32" />
+          <NavigationProperty Name="authors" Relationship="Self.FK__authors__ID_Song__32E0915F" FromRole="songs" ToRole="authors" />
+          <NavigationProperty Name="repertoires" Relationship="Self.FK__repertoir__ID_So__3A81B327" FromRole="songs" ToRole="repertoires" />
+          <NavigationProperty Name="tour_songs" Relationship="Self.FK__tour_song__ID_So__48CFD27E" FromRole="songs" ToRole="tour_songs" />
+        </EntityType>
+        <EntityType Name="tour_songs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Tour" Type="Int32" />
+          <Property Name="ID_Song" Type="Int32" />
+          <NavigationProperty Name="songs" Relationship="Self.FK__tour_song__ID_So__48CFD27E" FromRole="tour_songs" ToRole="songs" />
+          <NavigationProperty Name="tours" Relationship="Self.FK__tour_song__ID_To__47DBAE45" FromRole="tour_songs" ToRole="tours" />
+        </EntityType>
+        <EntityType Name="tours">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Group" Type="Int32" />
+          <Property Name="Date_beg" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="buy_tick" Relationship="Self.FK__buy_tick__ID_Tou__440B1D61" FromRole="tours" ToRole="buy_tick" />
+          <NavigationProperty Name="groups" Relationship="Self.FK__tours__ID_Group__3E52440B" FromRole="tours" ToRole="groups" />
+          <NavigationProperty Name="tour_songs" Relationship="Self.FK__tour_song__ID_To__47DBAE45" FromRole="tours" ToRole="tour_songs" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Role" Type="Int32" />
+          <NavigationProperty Name="groups" Relationship="Self.FK__groups__ID_User__2C3393D0" FromRole="users" ToRole="groups" />
+          <NavigationProperty Name="roles" Relationship="Self.FK__users__ID_Role__286302EC" FromRole="users" ToRole="roles" />
+        </EntityType>
+        <Association Name="FK__authors__ID_Exec__33D4B598">
+          <End Role="executor" Type="Self.executor" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="authors" Type="Self.authors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="executor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="authors">
+              <PropertyRef Name="ID_Executor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__authors__ID_Song__32E0915F">
+          <End Role="songs" Type="Self.songs" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="authors" Type="Self.authors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="songs">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="authors">
+              <PropertyRef Name="ID_Song" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__buy_tick__ID_Pla__44FF419A">
+          <End Role="places" Type="Self.places" Multiplicity="0..1" />
+          <End Role="buy_tick" Type="Self.buy_tick" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="places">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="buy_tick">
+              <PropertyRef Name="ID_Place" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__buy_tick__ID_Tou__440B1D61">
+          <End Role="tours" Type="Self.tours" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="buy_tick" Type="Self.buy_tick" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tours">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="buy_tick">
+              <PropertyRef Name="ID_Tour" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__groups__ID_Count__2B3F6F97">
+          <End Role="country" Type="Self.country" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="groups" Type="Self.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="country">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="ID_Country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__places__ID_Count__412EB0B6">
+          <End Role="country" Type="Self.country" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="places" Type="Self.places" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="country">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="places">
+              <PropertyRef Name="ID_Country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__group_exe__ID_Ex__36B12243">
+          <End Role="executor" Type="Self.executor" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="group_executor" Type="Self.group_executor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="executor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="group_executor">
+              <PropertyRef Name="ID_Executor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__group_exe__ID_Gr__37A5467C">
+          <End Role="groups" Type="Self.groups" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="group_executor" Type="Self.group_executor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groups">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="group_executor">
+              <PropertyRef Name="ID_Group" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__groups__ID_User__2C3393D0">
+          <End Role="users" Type="Self.users" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="groups" Type="Self.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="ID_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__repertoir__ID_Gr__3B75D760">
+          <End Role="groups" Type="Self.groups" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="repertoires" Type="Self.repertoires" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groups">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="repertoires">
+              <PropertyRef Name="ID_Group" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tours__ID_Group__3E52440B">
+          <End Role="groups" Type="Self.groups" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tours" Type="Self.tours" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groups">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tours">
+              <PropertyRef Name="ID_Group" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__repertoir__ID_So__3A81B327">
+          <End Role="songs" Type="Self.songs" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="repertoires" Type="Self.repertoires" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="songs">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="repertoires">
+              <PropertyRef Name="ID_Song" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__users__ID_Role__286302EC">
+          <End Role="roles" Type="Self.roles" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="users" Type="Self.users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="ID_Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tour_song__ID_So__48CFD27E">
+          <End Role="songs" Type="Self.songs" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tour_songs" Type="Self.tour_songs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="songs">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tour_songs">
+              <PropertyRef Name="ID_Song" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tour_song__ID_To__47DBAE45">
+          <End Role="tours" Type="Self.tours" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tour_songs" Type="Self.tour_songs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tours">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tour_songs">
+              <PropertyRef Name="ID_Tour" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="subdcursa4Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="authors" EntityType="Self.authors" />
+          <EntitySet Name="buy_tick" EntityType="Self.buy_tick" />
+          <EntitySet Name="country" EntityType="Self.country" />
+          <EntitySet Name="executor" EntityType="Self.executor" />
+          <EntitySet Name="group_executor" EntityType="Self.group_executor" />
+          <EntitySet Name="groups" EntityType="Self.groups" />
+          <EntitySet Name="places" EntityType="Self.places" />
+          <EntitySet Name="repertoires" EntityType="Self.repertoires" />
+          <EntitySet Name="roles" EntityType="Self.roles" />
+          <EntitySet Name="songs" EntityType="Self.songs" />
+          <EntitySet Name="tour_songs" EntityType="Self.tour_songs" />
+          <EntitySet Name="tours" EntityType="Self.tours" />
+          <EntitySet Name="users" EntityType="Self.users" />
+          <AssociationSet Name="FK__authors__ID_Exec__33D4B598" Association="Self.FK__authors__ID_Exec__33D4B598">
+            <End Role="executor" EntitySet="executor" />
+            <End Role="authors" EntitySet="authors" />
+          </AssociationSet>
+          <AssociationSet Name="FK__authors__ID_Song__32E0915F" Association="Self.FK__authors__ID_Song__32E0915F">
+            <End Role="songs" EntitySet="songs" />
+            <End Role="authors" EntitySet="authors" />
+          </AssociationSet>
+          <AssociationSet Name="FK__buy_tick__ID_Pla__44FF419A" Association="Self.FK__buy_tick__ID_Pla__44FF419A">
+            <End Role="places" EntitySet="places" />
+            <End Role="buy_tick" EntitySet="buy_tick" />
+          </AssociationSet>
+          <AssociationSet Name="FK__buy_tick__ID_Tou__440B1D61" Association="Self.FK__buy_tick__ID_Tou__440B1D61">
+            <End Role="tours" EntitySet="tours" />
+            <End Role="buy_tick" EntitySet="buy_tick" />
+          </AssociationSet>
+          <AssociationSet Name="FK__groups__ID_Count__2B3F6F97" Association="Self.FK__groups__ID_Count__2B3F6F97">
+            <End Role="country" EntitySet="country" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__places__ID_Count__412EB0B6" Association="Self.FK__places__ID_Count__412EB0B6">
+            <End Role="country" EntitySet="country" />
+            <End Role="places" EntitySet="places" />
+          </AssociationSet>
+          <AssociationSet Name="FK__group_exe__ID_Ex__36B12243" Association="Self.FK__group_exe__ID_Ex__36B12243">
+            <End Role="executor" EntitySet="executor" />
+            <End Role="group_executor" EntitySet="group_executor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__group_exe__ID_Gr__37A5467C" Association="Self.FK__group_exe__ID_Gr__37A5467C">
+            <End Role="groups" EntitySet="groups" />
+            <End Role="group_executor" EntitySet="group_executor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__groups__ID_User__2C3393D0" Association="Self.FK__groups__ID_User__2C3393D0">
+            <End Role="users" EntitySet="users" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__repertoir__ID_Gr__3B75D760" Association="Self.FK__repertoir__ID_Gr__3B75D760">
+            <End Role="groups" EntitySet="groups" />
+            <End Role="repertoires" EntitySet="repertoires" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tours__ID_Group__3E52440B" Association="Self.FK__tours__ID_Group__3E52440B">
+            <End Role="groups" EntitySet="groups" />
+            <End Role="tours" EntitySet="tours" />
+          </AssociationSet>
+          <AssociationSet Name="FK__repertoir__ID_So__3A81B327" Association="Self.FK__repertoir__ID_So__3A81B327">
+            <End Role="songs" EntitySet="songs" />
+            <End Role="repertoires" EntitySet="repertoires" />
+          </AssociationSet>
+          <AssociationSet Name="FK__users__ID_Role__286302EC" Association="Self.FK__users__ID_Role__286302EC">
+            <End Role="roles" EntitySet="roles" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tour_song__ID_So__48CFD27E" Association="Self.FK__tour_song__ID_So__48CFD27E">
+            <End Role="songs" EntitySet="songs" />
+            <End Role="tour_songs" EntitySet="tour_songs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tour_song__ID_To__47DBAE45" Association="Self.FK__tour_song__ID_To__47DBAE45">
+            <End Role="tours" EntitySet="tours" />
+            <End Role="tour_songs" EntitySet="tour_songs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище subdcursa4ModelContainer" CdmEntityContainer="subdcursa4Entities">
+          <EntitySetMapping Name="authors">
+            <EntityTypeMapping TypeName="subdcursa4Model.authors">
+              <MappingFragment StoreEntitySet="authors">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Song" ColumnName="ID_Song" />
+                <ScalarProperty Name="ID_Executor" ColumnName="ID_Executor" />
+                <ScalarProperty Name="role_stat" ColumnName="role_stat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="buy_tick">
+            <EntityTypeMapping TypeName="subdcursa4Model.buy_tick">
+              <MappingFragment StoreEntitySet="buy_tick">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Tour" ColumnName="ID_Tour" />
+                <ScalarProperty Name="ID_Place" ColumnName="ID_Place" />
+                <ScalarProperty Name="Date_beg" ColumnName="Date_beg" />
+                <ScalarProperty Name="Date_ov" ColumnName="Date_ov" />
+                <ScalarProperty Name="SummPR_tick" ColumnName="SummPR_tick" />
+                <ScalarProperty Name="Price_tick" ColumnName="Price_tick" />
+                <ScalarProperty Name="Count_tick" ColumnName="Count_tick" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="country">
+            <EntityTypeMapping TypeName="subdcursa4Model.country">
+              <MappingFragment StoreEntitySet="country">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="executor">
+            <EntityTypeMapping TypeName="subdcursa4Model.executor">
+              <MappingFragment StoreEntitySet="executor">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Birth_date" ColumnName="Birth_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="group_executor">
+            <EntityTypeMapping TypeName="subdcursa4Model.group_executor">
+              <MappingFragment StoreEntitySet="group_executor">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Executor" ColumnName="ID_Executor" />
+                <ScalarProperty Name="ID_Group" ColumnName="ID_Group" />
+                <ScalarProperty Name="Date_arr" ColumnName="Date_arr" />
+                <ScalarProperty Name="Date_depart" ColumnName="Date_depart" />
+                <ScalarProperty Name="Role_stat" ColumnName="Role_stat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="groups">
+            <EntityTypeMapping TypeName="subdcursa4Model.groups">
+              <MappingFragment StoreEntitySet="groups">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="ID_Country" ColumnName="ID_Country" />
+                <ScalarProperty Name="Place" ColumnName="Place" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="places">
+            <EntityTypeMapping TypeName="subdcursa4Model.places">
+              <MappingFragment StoreEntitySet="places">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name_loc" ColumnName="Name_loc" />
+                <ScalarProperty Name="Name_place" ColumnName="Name_place" />
+                <ScalarProperty Name="Price_tick" ColumnName="Price_tick" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="ID_Country" ColumnName="ID_Country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="repertoires">
+            <EntityTypeMapping TypeName="subdcursa4Model.repertoires">
+              <MappingFragment StoreEntitySet="repertoires">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Song" ColumnName="ID_Song" />
+                <ScalarProperty Name="ID_Group" ColumnName="ID_Group" />
+                <ScalarProperty Name="date_beg" ColumnName="date_beg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="roles">
+            <EntityTypeMapping TypeName="subdcursa4Model.roles">
+              <MappingFragment StoreEntitySet="roles">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="songs">
+            <EntityTypeMapping TypeName="subdcursa4Model.songs">
+              <MappingFragment StoreEntitySet="songs">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tour_songs">
+            <EntityTypeMapping TypeName="subdcursa4Model.tour_songs">
+              <MappingFragment StoreEntitySet="tour_songs">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Tour" ColumnName="ID_Tour" />
+                <ScalarProperty Name="ID_Song" ColumnName="ID_Song" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tours">
+            <EntityTypeMapping TypeName="subdcursa4Model.tours">
+              <MappingFragment StoreEntitySet="tours">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Group" ColumnName="ID_Group" />
+                <ScalarProperty Name="Date_beg" ColumnName="Date_beg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="subdcursa4Model.users">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="ID_Role" ColumnName="ID_Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

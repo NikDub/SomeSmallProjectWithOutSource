@@ -1,0 +1,1472 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище sportModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Accident">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Accident_People">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_people" Type="int" />
+          <Property Name="ID_accident" Type="int" />
+          <Property Name="date" Type="date" />
+        </EntityType>
+        <EntityType Name="Achivments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_People" Type="int" />
+          <Property Name="ID_Competition_Participant" Type="int" />
+          <Property Name="ID_Medal" Type="int" />
+        </EntityType>
+        <EntityType Name="Coach">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_People" Type="int" />
+          <Property Name="ID_Coach" Type="int" />
+          <Property Name="Date" Type="date" />
+        </EntityType>
+        <EntityType Name="Competition">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Country" Type="nvarchar(max)" />
+          <Property Name="City" Type="nvarchar(max)" />
+          <Property Name="Start_date" Type="date" />
+          <Property Name="End_date" Type="date" />
+        </EntityType>
+        <EntityType Name="Competition_Participant">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Team" Type="int" />
+          <Property Name="ID_People" Type="int" />
+          <Property Name="ID_Competition" Type="int" />
+        </EntityType>
+        <EntityType Name="Discharge">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Medal">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="People">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar(max)" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Patronymic" Type="nvarchar(max)" />
+          <Property Name="Nationality" Type="nvarchar(max)" />
+          <Property Name="Birth_date" Type="date" />
+          <Property Name="Country" Type="nvarchar(max)" />
+          <Property Name="City" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="People_Discharge">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Sport_type" Type="int" />
+          <Property Name="ID_People" Type="int" />
+          <Property Name="ID_Discharge" Type="int" />
+        </EntityType>
+        <EntityType Name="People_Post">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_people" Type="int" />
+          <Property Name="ID_post" Type="int" />
+          <Property Name="ID_sport_type" Type="int" />
+          <Property Name="Start_date" Type="date" />
+          <Property Name="End_date" Type="date" />
+        </EntityType>
+        <EntityType Name="People_Team">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_people" Type="int" />
+          <Property Name="ID_Team" Type="int" />
+          <Property Name="Start_date" Type="date" />
+          <Property Name="End_date" Type="date" />
+          <Property Name="Reason" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="People_Title">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Sport_type" Type="int" />
+          <Property Name="ID_People" Type="int" />
+          <Property Name="ID_Title" Type="int" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Sport_type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Country" Type="nvarchar(max)" />
+          <Property Name="City" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Title">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Accident_People_Accident">
+          <End Role="Accident" Type="Self.Accident" Multiplicity="0..1" />
+          <End Role="Accident_People" Type="Self.Accident_People" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accident">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Accident_People">
+              <PropertyRef Name="ID_accident" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accident_People_People">
+          <End Role="People" Type="Self.People" Multiplicity="0..1" />
+          <End Role="Accident_People" Type="Self.Accident_People" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="People">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Accident_People">
+              <PropertyRef Name="ID_people" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Achivments_Competition_Participant">
+          <End Role="Competition_Participant" Type="Self.Competition_Participant" Multiplicity="0..1" />
+          <End Role="Achivments" Type="Self.Achivments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competition_Participant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Achivments">
+              <PropertyRef Name="ID_Competition_Participant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Achivments_Medal">
+          <End Role="Medal" Type="Self.Medal" Multiplicity="0..1" />
+          <End Role="Achivments" Type="Self.Achivments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Achivments">
+              <PropertyRef Name="ID_Medal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Achivments_People">
+          <End Role="People" Type="Self.People" Multiplicity="0..1" />
+          <End Role="Achivments" Type="Self.Achivments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="People">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Achivments">
+              <PropertyRef Name="ID_People" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Coach_People">
+          <End Role="People" Type="Self.People" Multiplicity="0..1" />
+          <End Role="Coach" Type="Self.Coach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="People">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Coach">
+              <PropertyRef Name="ID_People" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Competition_Participant_Competition">
+          <End Role="Competition" Type="Self.Competition" Multiplicity="0..1" />
+          <End Role="Competition_Participant" Type="Self.Competition_Participant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competition">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Competition_Participant">
+              <PropertyRef Name="ID_Competition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Competition_Participant_People">
+          <End Role="People" Type="Self.People" Multiplicity="0..1" />
+          <End Role="Competition_Participant" Type="Self.Competition_Participant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="People">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Competition_Participant">
+              <PropertyRef Name="ID_People" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Competition_Participant_Team">
+          <End Role="Team" Type="Self.Team" Multiplicity="0..1" />
+          <End Role="Competition_Participant" Type="Self.Competition_Participant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Competition_Participant">
+              <PropertyRef Name="ID_Team" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_People_Discharge_Discharge">
+          <End Role="Discharge" Type="Self.Discharge" Multiplicity="0..1" />
+          <End Role="People_Discharge" Type="Self.People_Discharge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Discharge">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="People_Discharge">
+              <PropertyRef Name="ID_Discharge" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_People_Discharge_People">
+          <End Role="People" Type="Self.People" Multiplicity="0..1" />
+          <End Role="People_Discharge" Type="Self.People_Discharge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="People">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="People_Discharge">
+              <PropertyRef Name="ID_People" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_People_Discharge_Sport_type">
+          <End Role="Sport_type" Type="Self.Sport_type" Multiplicity="0..1" />
+          <End Role="People_Discharge" Type="Self.People_Discharge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sport_type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="People_Discharge">
+              <PropertyRef Name="ID_Sport_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_People_Post_People">
+          <End Role="People" Type="Self.People" Multiplicity="0..1" />
+          <End Role="People_Post" Type="Self.People_Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="People">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="People_Post">
+              <PropertyRef Name="ID_people" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_People_Post_Post">
+          <End Role="Post" Type="Self.Post" Multiplicity="0..1" />
+          <End Role="People_Post" Type="Self.People_Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="People_Post">
+              <PropertyRef Name="ID_post" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_People_Post_Sport_type">
+          <End Role="Sport_type" Type="Self.Sport_type" Multiplicity="0..1" />
+          <End Role="People_Post" Type="Self.People_Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sport_type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="People_Post">
+              <PropertyRef Name="ID_sport_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_People_Team_People">
+          <End Role="People" Type="Self.People" Multiplicity="0..1" />
+          <End Role="People_Team" Type="Self.People_Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="People">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="People_Team">
+              <PropertyRef Name="ID_people" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_People_Team_Team">
+          <End Role="Team" Type="Self.Team" Multiplicity="0..1" />
+          <End Role="People_Team" Type="Self.People_Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="People_Team">
+              <PropertyRef Name="ID_Team" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_People_Title_People">
+          <End Role="People" Type="Self.People" Multiplicity="0..1" />
+          <End Role="People_Title" Type="Self.People_Title" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="People">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="People_Title">
+              <PropertyRef Name="ID_People" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_People_Title_Sport_type">
+          <End Role="Sport_type" Type="Self.Sport_type" Multiplicity="0..1" />
+          <End Role="People_Title" Type="Self.People_Title" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sport_type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="People_Title">
+              <PropertyRef Name="ID_Sport_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_People_Title_Title">
+          <End Role="Title" Type="Self.Title" Multiplicity="0..1" />
+          <End Role="People_Title" Type="Self.People_Title" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Title">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="People_Title">
+              <PropertyRef Name="ID_Title" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SportStyle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Team_Enter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="competID" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Team" Type="nvarchar(max)" />
+                <Property Name="People name" Type="nvarchar(max)" />
+                <Property Name="Surname" Type="nvarchar(max)" />
+                <Property Name="Patronymic" Type="nvarchar(max)" />
+                <Property Name="Name" Type="nvarchar" MaxLength="50" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="TeamsName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Work_Date" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DateStart" Type="date" Mode="In" />
+          <Parameter Name="DateEnd" Type="date" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="People Name" Type="nvarchar(max)" />
+                <Property Name="Surname" Type="nvarchar(max)" />
+                <Property Name="Patronymic" Type="nvarchar(max)" />
+                <Property Name="Post" Type="nvarchar(max)" />
+                <Property Name="Sport" Type="nvarchar(max)" />
+                <Property Name="Start_date" Type="date" />
+                <Property Name="End_date" Type="date" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <EntityContainer Name="Хранилище sportModelContainer">
+          <EntitySet Name="Accident" EntityType="Self.Accident" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Accident_People" EntityType="Self.Accident_People" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Achivments" EntityType="Self.Achivments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Coach" EntityType="Self.Coach" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Competition" EntityType="Self.Competition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Competition_Participant" EntityType="Self.Competition_Participant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Discharge" EntityType="Self.Discharge" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medal" EntityType="Self.Medal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="People" EntityType="Self.People" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="People_Discharge" EntityType="Self.People_Discharge" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="People_Post" EntityType="Self.People_Post" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="People_Team" EntityType="Self.People_Team" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="People_Title" EntityType="Self.People_Title" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sport_type" EntityType="Self.Sport_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Team" EntityType="Self.Team" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Title" EntityType="Self.Title" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Accident_People_Accident" Association="Self.FK_Accident_People_Accident">
+            <End Role="Accident" EntitySet="Accident" />
+            <End Role="Accident_People" EntitySet="Accident_People" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accident_People_People" Association="Self.FK_Accident_People_People">
+            <End Role="People" EntitySet="People" />
+            <End Role="Accident_People" EntitySet="Accident_People" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Achivments_Competition_Participant" Association="Self.FK_Achivments_Competition_Participant">
+            <End Role="Competition_Participant" EntitySet="Competition_Participant" />
+            <End Role="Achivments" EntitySet="Achivments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Achivments_Medal" Association="Self.FK_Achivments_Medal">
+            <End Role="Medal" EntitySet="Medal" />
+            <End Role="Achivments" EntitySet="Achivments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Achivments_People" Association="Self.FK_Achivments_People">
+            <End Role="People" EntitySet="People" />
+            <End Role="Achivments" EntitySet="Achivments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Coach_People" Association="Self.FK_Coach_People">
+            <End Role="People" EntitySet="People" />
+            <End Role="Coach" EntitySet="Coach" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Competition_Participant_Competition" Association="Self.FK_Competition_Participant_Competition">
+            <End Role="Competition" EntitySet="Competition" />
+            <End Role="Competition_Participant" EntitySet="Competition_Participant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Competition_Participant_People" Association="Self.FK_Competition_Participant_People">
+            <End Role="People" EntitySet="People" />
+            <End Role="Competition_Participant" EntitySet="Competition_Participant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Competition_Participant_Team" Association="Self.FK_Competition_Participant_Team">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="Competition_Participant" EntitySet="Competition_Participant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_People_Discharge_Discharge" Association="Self.FK_People_Discharge_Discharge">
+            <End Role="Discharge" EntitySet="Discharge" />
+            <End Role="People_Discharge" EntitySet="People_Discharge" />
+          </AssociationSet>
+          <AssociationSet Name="FK_People_Discharge_People" Association="Self.FK_People_Discharge_People">
+            <End Role="People" EntitySet="People" />
+            <End Role="People_Discharge" EntitySet="People_Discharge" />
+          </AssociationSet>
+          <AssociationSet Name="FK_People_Discharge_Sport_type" Association="Self.FK_People_Discharge_Sport_type">
+            <End Role="Sport_type" EntitySet="Sport_type" />
+            <End Role="People_Discharge" EntitySet="People_Discharge" />
+          </AssociationSet>
+          <AssociationSet Name="FK_People_Post_People" Association="Self.FK_People_Post_People">
+            <End Role="People" EntitySet="People" />
+            <End Role="People_Post" EntitySet="People_Post" />
+          </AssociationSet>
+          <AssociationSet Name="FK_People_Post_Post" Association="Self.FK_People_Post_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="People_Post" EntitySet="People_Post" />
+          </AssociationSet>
+          <AssociationSet Name="FK_People_Post_Sport_type" Association="Self.FK_People_Post_Sport_type">
+            <End Role="Sport_type" EntitySet="Sport_type" />
+            <End Role="People_Post" EntitySet="People_Post" />
+          </AssociationSet>
+          <AssociationSet Name="FK_People_Team_People" Association="Self.FK_People_Team_People">
+            <End Role="People" EntitySet="People" />
+            <End Role="People_Team" EntitySet="People_Team" />
+          </AssociationSet>
+          <AssociationSet Name="FK_People_Team_Team" Association="Self.FK_People_Team_Team">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="People_Team" EntitySet="People_Team" />
+          </AssociationSet>
+          <AssociationSet Name="FK_People_Title_People" Association="Self.FK_People_Title_People">
+            <End Role="People" EntitySet="People" />
+            <End Role="People_Title" EntitySet="People_Title" />
+          </AssociationSet>
+          <AssociationSet Name="FK_People_Title_Sport_type" Association="Self.FK_People_Title_Sport_type">
+            <End Role="Sport_type" EntitySet="Sport_type" />
+            <End Role="People_Title" EntitySet="People_Title" />
+          </AssociationSet>
+          <AssociationSet Name="FK_People_Title_Title" Association="Self.FK_People_Title_Title">
+            <End Role="Title" EntitySet="Title" />
+            <End Role="People_Title" EntitySet="People_Title" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="sportModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="Team_Enter_Result">
+          <Property Name="Team" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="People_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </ComplexType>
+        <ComplexType Name="Work_Date_Result">
+          <Property Name="People_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Post" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sport" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Start_date" Type="DateTime" />
+          <Property Name="End_date" Type="DateTime" />
+        </ComplexType>
+        <EntityType Name="Accident">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Accident_People" Relationship="Self.FK_Accident_People_Accident" FromRole="Accident" ToRole="Accident_People" />
+        </EntityType>
+        <EntityType Name="Accident_People">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_people" Type="Int32" />
+          <Property Name="ID_accident" Type="Int32" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Accident" Relationship="Self.FK_Accident_People_Accident" FromRole="Accident_People" ToRole="Accident" />
+          <NavigationProperty Name="People" Relationship="Self.FK_Accident_People_People" FromRole="Accident_People" ToRole="People" />
+        </EntityType>
+        <EntityType Name="Achivments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_People" Type="Int32" />
+          <Property Name="ID_Competition_Participant" Type="Int32" />
+          <Property Name="ID_Medal" Type="Int32" />
+          <NavigationProperty Name="Competition_Participant" Relationship="Self.FK_Achivments_Competition_Participant" FromRole="Achivments" ToRole="Competition_Participant" />
+          <NavigationProperty Name="Medal" Relationship="Self.FK_Achivments_Medal" FromRole="Achivments" ToRole="Medal" />
+          <NavigationProperty Name="People" Relationship="Self.FK_Achivments_People" FromRole="Achivments" ToRole="People" />
+        </EntityType>
+        <EntityType Name="Coach">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_People" Type="Int32" />
+          <Property Name="ID_Coach" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="People" Relationship="Self.FK_Coach_People" FromRole="Coach" ToRole="People" />
+        </EntityType>
+        <EntityType Name="Competition">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Start_date" Type="DateTime" Precision="0" />
+          <Property Name="End_date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Competition_Participant" Relationship="Self.FK_Competition_Participant_Competition" FromRole="Competition" ToRole="Competition_Participant" />
+        </EntityType>
+        <EntityType Name="Competition_Participant">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Team" Type="Int32" />
+          <Property Name="ID_People" Type="Int32" />
+          <Property Name="ID_Competition" Type="Int32" />
+          <NavigationProperty Name="Achivments" Relationship="Self.FK_Achivments_Competition_Participant" FromRole="Competition_Participant" ToRole="Achivments" />
+          <NavigationProperty Name="Competition" Relationship="Self.FK_Competition_Participant_Competition" FromRole="Competition_Participant" ToRole="Competition" />
+          <NavigationProperty Name="People" Relationship="Self.FK_Competition_Participant_People" FromRole="Competition_Participant" ToRole="People" />
+          <NavigationProperty Name="Team" Relationship="Self.FK_Competition_Participant_Team" FromRole="Competition_Participant" ToRole="Team" />
+        </EntityType>
+        <EntityType Name="Discharge">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="People_Discharge" Relationship="Self.FK_People_Discharge_Discharge" FromRole="Discharge" ToRole="People_Discharge" />
+        </EntityType>
+        <EntityType Name="Medal">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Achivments" Relationship="Self.FK_Achivments_Medal" FromRole="Medal" ToRole="Achivments" />
+        </EntityType>
+        <EntityType Name="People">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Nationality" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Birth_date" Type="DateTime" Precision="0" />
+          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Accident_People" Relationship="Self.FK_Accident_People_People" FromRole="People" ToRole="Accident_People" />
+          <NavigationProperty Name="Achivments" Relationship="Self.FK_Achivments_People" FromRole="People" ToRole="Achivments" />
+          <NavigationProperty Name="Coach" Relationship="Self.FK_Coach_People" FromRole="People" ToRole="Coach" />
+          <NavigationProperty Name="Competition_Participant" Relationship="Self.FK_Competition_Participant_People" FromRole="People" ToRole="Competition_Participant" />
+          <NavigationProperty Name="People_Discharge" Relationship="Self.FK_People_Discharge_People" FromRole="People" ToRole="People_Discharge" />
+          <NavigationProperty Name="People_Post" Relationship="Self.FK_People_Post_People" FromRole="People" ToRole="People_Post" />
+          <NavigationProperty Name="People_Team" Relationship="Self.FK_People_Team_People" FromRole="People" ToRole="People_Team" />
+          <NavigationProperty Name="People_Title" Relationship="Self.FK_People_Title_People" FromRole="People" ToRole="People_Title" />
+        </EntityType>
+        <EntityType Name="People_Discharge">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Sport_type" Type="Int32" />
+          <Property Name="ID_People" Type="Int32" />
+          <Property Name="ID_Discharge" Type="Int32" />
+          <NavigationProperty Name="Discharge" Relationship="Self.FK_People_Discharge_Discharge" FromRole="People_Discharge" ToRole="Discharge" />
+          <NavigationProperty Name="People" Relationship="Self.FK_People_Discharge_People" FromRole="People_Discharge" ToRole="People" />
+          <NavigationProperty Name="Sport_type" Relationship="Self.FK_People_Discharge_Sport_type" FromRole="People_Discharge" ToRole="Sport_type" />
+        </EntityType>
+        <EntityType Name="People_Post">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_people" Type="Int32" />
+          <Property Name="ID_post" Type="Int32" />
+          <Property Name="ID_sport_type" Type="Int32" />
+          <Property Name="Start_date" Type="DateTime" Precision="0" />
+          <Property Name="End_date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="People" Relationship="Self.FK_People_Post_People" FromRole="People_Post" ToRole="People" />
+          <NavigationProperty Name="Post" Relationship="Self.FK_People_Post_Post" FromRole="People_Post" ToRole="Post" />
+          <NavigationProperty Name="Sport_type" Relationship="Self.FK_People_Post_Sport_type" FromRole="People_Post" ToRole="Sport_type" />
+        </EntityType>
+        <EntityType Name="People_Team">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_people" Type="Int32" />
+          <Property Name="ID_Team" Type="Int32" />
+          <Property Name="Start_date" Type="DateTime" Precision="0" />
+          <Property Name="End_date" Type="DateTime" Precision="0" />
+          <Property Name="Reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="People" Relationship="Self.FK_People_Team_People" FromRole="People_Team" ToRole="People" />
+          <NavigationProperty Name="Team" Relationship="Self.FK_People_Team_Team" FromRole="People_Team" ToRole="Team" />
+        </EntityType>
+        <EntityType Name="People_Title">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Sport_type" Type="Int32" />
+          <Property Name="ID_People" Type="Int32" />
+          <Property Name="ID_Title" Type="Int32" />
+          <NavigationProperty Name="People" Relationship="Self.FK_People_Title_People" FromRole="People_Title" ToRole="People" />
+          <NavigationProperty Name="Sport_type" Relationship="Self.FK_People_Title_Sport_type" FromRole="People_Title" ToRole="Sport_type" />
+          <NavigationProperty Name="Title" Relationship="Self.FK_People_Title_Title" FromRole="People_Title" ToRole="Title" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="People_Post" Relationship="Self.FK_People_Post_Post" FromRole="Post" ToRole="People_Post" />
+        </EntityType>
+        <EntityType Name="Sport_type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="People_Discharge" Relationship="Self.FK_People_Discharge_Sport_type" FromRole="Sport_type" ToRole="People_Discharge" />
+          <NavigationProperty Name="People_Post" Relationship="Self.FK_People_Post_Sport_type" FromRole="Sport_type" ToRole="People_Post" />
+          <NavigationProperty Name="People_Title" Relationship="Self.FK_People_Title_Sport_type" FromRole="Sport_type" ToRole="People_Title" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Competition_Participant" Relationship="Self.FK_Competition_Participant_Team" FromRole="Team" ToRole="Competition_Participant" />
+          <NavigationProperty Name="People_Team" Relationship="Self.FK_People_Team_Team" FromRole="Team" ToRole="People_Team" />
+        </EntityType>
+        <EntityType Name="Title">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="People_Title" Relationship="Self.FK_People_Title_Title" FromRole="Title" ToRole="People_Title" />
+        </EntityType>
+        <Association Name="FK_Accident_People_Accident">
+          <End Role="Accident" Type="Self.Accident" Multiplicity="0..1" />
+          <End Role="Accident_People" Type="Self.Accident_People" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accident">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Accident_People">
+              <PropertyRef Name="ID_accident" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accident_People_People">
+          <End Role="People" Type="Self.People" Multiplicity="0..1" />
+          <End Role="Accident_People" Type="Self.Accident_People" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="People">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Accident_People">
+              <PropertyRef Name="ID_people" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Achivments_Competition_Participant">
+          <End Role="Competition_Participant" Type="Self.Competition_Participant" Multiplicity="0..1" />
+          <End Role="Achivments" Type="Self.Achivments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competition_Participant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Achivments">
+              <PropertyRef Name="ID_Competition_Participant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Achivments_Medal">
+          <End Role="Medal" Type="Self.Medal" Multiplicity="0..1" />
+          <End Role="Achivments" Type="Self.Achivments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medal">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Achivments">
+              <PropertyRef Name="ID_Medal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Achivments_People">
+          <End Role="People" Type="Self.People" Multiplicity="0..1" />
+          <End Role="Achivments" Type="Self.Achivments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="People">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Achivments">
+              <PropertyRef Name="ID_People" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Coach_People">
+          <End Role="People" Type="Self.People" Multiplicity="0..1" />
+          <End Role="Coach" Type="Self.Coach" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="People">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Coach">
+              <PropertyRef Name="ID_People" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Competition_Participant_Competition">
+          <End Role="Competition" Type="Self.Competition" Multiplicity="0..1" />
+          <End Role="Competition_Participant" Type="Self.Competition_Participant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competition">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Competition_Participant">
+              <PropertyRef Name="ID_Competition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Competition_Participant_People">
+          <End Role="People" Type="Self.People" Multiplicity="0..1" />
+          <End Role="Competition_Participant" Type="Self.Competition_Participant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="People">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Competition_Participant">
+              <PropertyRef Name="ID_People" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Competition_Participant_Team">
+          <End Role="Team" Type="Self.Team" Multiplicity="0..1" />
+          <End Role="Competition_Participant" Type="Self.Competition_Participant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Competition_Participant">
+              <PropertyRef Name="ID_Team" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_People_Discharge_Discharge">
+          <End Role="Discharge" Type="Self.Discharge" Multiplicity="0..1" />
+          <End Role="People_Discharge" Type="Self.People_Discharge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Discharge">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="People_Discharge">
+              <PropertyRef Name="ID_Discharge" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_People_Discharge_People">
+          <End Role="People" Type="Self.People" Multiplicity="0..1" />
+          <End Role="People_Discharge" Type="Self.People_Discharge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="People">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="People_Discharge">
+              <PropertyRef Name="ID_People" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_People_Post_People">
+          <End Role="People" Type="Self.People" Multiplicity="0..1" />
+          <End Role="People_Post" Type="Self.People_Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="People">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="People_Post">
+              <PropertyRef Name="ID_people" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_People_Team_People">
+          <End Role="People" Type="Self.People" Multiplicity="0..1" />
+          <End Role="People_Team" Type="Self.People_Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="People">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="People_Team">
+              <PropertyRef Name="ID_people" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_People_Title_People">
+          <End Role="People" Type="Self.People" Multiplicity="0..1" />
+          <End Role="People_Title" Type="Self.People_Title" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="People">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="People_Title">
+              <PropertyRef Name="ID_People" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_People_Discharge_Sport_type">
+          <End Role="Sport_type" Type="Self.Sport_type" Multiplicity="0..1" />
+          <End Role="People_Discharge" Type="Self.People_Discharge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sport_type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="People_Discharge">
+              <PropertyRef Name="ID_Sport_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_People_Post_Post">
+          <End Role="Post" Type="Self.Post" Multiplicity="0..1" />
+          <End Role="People_Post" Type="Self.People_Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="People_Post">
+              <PropertyRef Name="ID_post" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_People_Post_Sport_type">
+          <End Role="Sport_type" Type="Self.Sport_type" Multiplicity="0..1" />
+          <End Role="People_Post" Type="Self.People_Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sport_type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="People_Post">
+              <PropertyRef Name="ID_sport_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_People_Team_Team">
+          <End Role="Team" Type="Self.Team" Multiplicity="0..1" />
+          <End Role="People_Team" Type="Self.People_Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="People_Team">
+              <PropertyRef Name="ID_Team" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_People_Title_Sport_type">
+          <End Role="Sport_type" Type="Self.Sport_type" Multiplicity="0..1" />
+          <End Role="People_Title" Type="Self.People_Title" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sport_type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="People_Title">
+              <PropertyRef Name="ID_Sport_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_People_Title_Title">
+          <End Role="Title" Type="Self.Title" Multiplicity="0..1" />
+          <End Role="People_Title" Type="Self.People_Title" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Title">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="People_Title">
+              <PropertyRef Name="ID_Title" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SportBD" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accident" EntityType="Self.Accident" />
+          <EntitySet Name="Accident_People" EntityType="Self.Accident_People" />
+          <EntitySet Name="Achivments" EntityType="Self.Achivments" />
+          <EntitySet Name="Coach" EntityType="Self.Coach" />
+          <EntitySet Name="Competition" EntityType="Self.Competition" />
+          <EntitySet Name="Competition_Participant" EntityType="Self.Competition_Participant" />
+          <EntitySet Name="Discharge" EntityType="Self.Discharge" />
+          <EntitySet Name="Medal" EntityType="Self.Medal" />
+          <EntitySet Name="People" EntityType="Self.People" />
+          <EntitySet Name="People_Discharge" EntityType="Self.People_Discharge" />
+          <EntitySet Name="People_Post" EntityType="Self.People_Post" />
+          <EntitySet Name="People_Team" EntityType="Self.People_Team" />
+          <EntitySet Name="People_Title" EntityType="Self.People_Title" />
+          <EntitySet Name="Post" EntityType="Self.Post" />
+          <EntitySet Name="Sport_type" EntityType="Self.Sport_type" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Team" EntityType="Self.Team" />
+          <EntitySet Name="Title" EntityType="Self.Title" />
+          <AssociationSet Name="FK_Accident_People_Accident" Association="Self.FK_Accident_People_Accident">
+            <End Role="Accident" EntitySet="Accident" />
+            <End Role="Accident_People" EntitySet="Accident_People" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accident_People_People" Association="Self.FK_Accident_People_People">
+            <End Role="People" EntitySet="People" />
+            <End Role="Accident_People" EntitySet="Accident_People" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Achivments_Competition_Participant" Association="Self.FK_Achivments_Competition_Participant">
+            <End Role="Competition_Participant" EntitySet="Competition_Participant" />
+            <End Role="Achivments" EntitySet="Achivments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Achivments_Medal" Association="Self.FK_Achivments_Medal">
+            <End Role="Medal" EntitySet="Medal" />
+            <End Role="Achivments" EntitySet="Achivments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Achivments_People" Association="Self.FK_Achivments_People">
+            <End Role="People" EntitySet="People" />
+            <End Role="Achivments" EntitySet="Achivments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Coach_People" Association="Self.FK_Coach_People">
+            <End Role="People" EntitySet="People" />
+            <End Role="Coach" EntitySet="Coach" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Competition_Participant_Competition" Association="Self.FK_Competition_Participant_Competition">
+            <End Role="Competition" EntitySet="Competition" />
+            <End Role="Competition_Participant" EntitySet="Competition_Participant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Competition_Participant_People" Association="Self.FK_Competition_Participant_People">
+            <End Role="People" EntitySet="People" />
+            <End Role="Competition_Participant" EntitySet="Competition_Participant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Competition_Participant_Team" Association="Self.FK_Competition_Participant_Team">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="Competition_Participant" EntitySet="Competition_Participant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_People_Discharge_Discharge" Association="Self.FK_People_Discharge_Discharge">
+            <End Role="Discharge" EntitySet="Discharge" />
+            <End Role="People_Discharge" EntitySet="People_Discharge" />
+          </AssociationSet>
+          <AssociationSet Name="FK_People_Discharge_People" Association="Self.FK_People_Discharge_People">
+            <End Role="People" EntitySet="People" />
+            <End Role="People_Discharge" EntitySet="People_Discharge" />
+          </AssociationSet>
+          <AssociationSet Name="FK_People_Post_People" Association="Self.FK_People_Post_People">
+            <End Role="People" EntitySet="People" />
+            <End Role="People_Post" EntitySet="People_Post" />
+          </AssociationSet>
+          <AssociationSet Name="FK_People_Team_People" Association="Self.FK_People_Team_People">
+            <End Role="People" EntitySet="People" />
+            <End Role="People_Team" EntitySet="People_Team" />
+          </AssociationSet>
+          <AssociationSet Name="FK_People_Title_People" Association="Self.FK_People_Title_People">
+            <End Role="People" EntitySet="People" />
+            <End Role="People_Title" EntitySet="People_Title" />
+          </AssociationSet>
+          <AssociationSet Name="FK_People_Discharge_Sport_type" Association="Self.FK_People_Discharge_Sport_type">
+            <End Role="Sport_type" EntitySet="Sport_type" />
+            <End Role="People_Discharge" EntitySet="People_Discharge" />
+          </AssociationSet>
+          <AssociationSet Name="FK_People_Post_Post" Association="Self.FK_People_Post_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="People_Post" EntitySet="People_Post" />
+          </AssociationSet>
+          <AssociationSet Name="FK_People_Post_Sport_type" Association="Self.FK_People_Post_Sport_type">
+            <End Role="Sport_type" EntitySet="Sport_type" />
+            <End Role="People_Post" EntitySet="People_Post" />
+          </AssociationSet>
+          <AssociationSet Name="FK_People_Team_Team" Association="Self.FK_People_Team_Team">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="People_Team" EntitySet="People_Team" />
+          </AssociationSet>
+          <AssociationSet Name="FK_People_Title_Sport_type" Association="Self.FK_People_Title_Sport_type">
+            <End Role="Sport_type" EntitySet="Sport_type" />
+            <End Role="People_Title" EntitySet="People_Title" />
+          </AssociationSet>
+          <AssociationSet Name="FK_People_Title_Title" Association="Self.FK_People_Title_Title">
+            <End Role="Title" EntitySet="Title" />
+            <End Role="People_Title" EntitySet="People_Title" />
+          </AssociationSet>
+          <FunctionImport Name="Team_Enter" IsComposable="true" ReturnType="Collection(sportModel.Team_Enter_Result)">
+          <Parameter Name="competID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Work_Date" IsComposable="true" ReturnType="Collection(sportModel.Work_Date_Result)">
+            <Parameter Name="DateStart" Mode="In" Type="DateTime" />
+            <Parameter Name="DateEnd" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SportStyle" ReturnType="Collection(String)" />
+          <FunctionImport Name="TeamsName" ReturnType="Collection(String)" />
+          <EntitySet Name="Users" EntityType="sportModel.Users" />
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(sportModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(sportModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище sportModelContainer" CdmEntityContainer="SportBD">
+          <EntitySetMapping Name="Accident">
+            <EntityTypeMapping TypeName="sportModel.Accident">
+              <MappingFragment StoreEntitySet="Accident">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Accident_People">
+            <EntityTypeMapping TypeName="sportModel.Accident_People">
+              <MappingFragment StoreEntitySet="Accident_People">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_people" ColumnName="ID_people" />
+                <ScalarProperty Name="ID_accident" ColumnName="ID_accident" />
+                <ScalarProperty Name="date" ColumnName="date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Achivments">
+            <EntityTypeMapping TypeName="sportModel.Achivments">
+              <MappingFragment StoreEntitySet="Achivments">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_People" ColumnName="ID_People" />
+                <ScalarProperty Name="ID_Competition_Participant" ColumnName="ID_Competition_Participant" />
+                <ScalarProperty Name="ID_Medal" ColumnName="ID_Medal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Coach">
+            <EntityTypeMapping TypeName="sportModel.Coach">
+              <MappingFragment StoreEntitySet="Coach">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_People" ColumnName="ID_People" />
+                <ScalarProperty Name="ID_Coach" ColumnName="ID_Coach" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Competition">
+            <EntityTypeMapping TypeName="sportModel.Competition">
+              <MappingFragment StoreEntitySet="Competition">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Start_date" ColumnName="Start_date" />
+                <ScalarProperty Name="End_date" ColumnName="End_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Competition_Participant">
+            <EntityTypeMapping TypeName="sportModel.Competition_Participant">
+              <MappingFragment StoreEntitySet="Competition_Participant">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Team" ColumnName="ID_Team" />
+                <ScalarProperty Name="ID_People" ColumnName="ID_People" />
+                <ScalarProperty Name="ID_Competition" ColumnName="ID_Competition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Discharge">
+            <EntityTypeMapping TypeName="sportModel.Discharge">
+              <MappingFragment StoreEntitySet="Discharge">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medal">
+            <EntityTypeMapping TypeName="sportModel.Medal">
+              <MappingFragment StoreEntitySet="Medal">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="People">
+            <EntityTypeMapping TypeName="sportModel.People">
+              <MappingFragment StoreEntitySet="People">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="Birth_date" ColumnName="Birth_date" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="City" ColumnName="City" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="People_Discharge">
+            <EntityTypeMapping TypeName="sportModel.People_Discharge">
+              <MappingFragment StoreEntitySet="People_Discharge">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Sport_type" ColumnName="ID_Sport_type" />
+                <ScalarProperty Name="ID_People" ColumnName="ID_People" />
+                <ScalarProperty Name="ID_Discharge" ColumnName="ID_Discharge" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="People_Post">
+            <EntityTypeMapping TypeName="sportModel.People_Post">
+              <MappingFragment StoreEntitySet="People_Post">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_people" ColumnName="ID_people" />
+                <ScalarProperty Name="ID_post" ColumnName="ID_post" />
+                <ScalarProperty Name="ID_sport_type" ColumnName="ID_sport_type" />
+                <ScalarProperty Name="Start_date" ColumnName="Start_date" />
+                <ScalarProperty Name="End_date" ColumnName="End_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="People_Team">
+            <EntityTypeMapping TypeName="sportModel.People_Team">
+              <MappingFragment StoreEntitySet="People_Team">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_people" ColumnName="ID_people" />
+                <ScalarProperty Name="ID_Team" ColumnName="ID_Team" />
+                <ScalarProperty Name="Start_date" ColumnName="Start_date" />
+                <ScalarProperty Name="End_date" ColumnName="End_date" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="People_Title">
+            <EntityTypeMapping TypeName="sportModel.People_Title">
+              <MappingFragment StoreEntitySet="People_Title">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Sport_type" ColumnName="ID_Sport_type" />
+                <ScalarProperty Name="ID_People" ColumnName="ID_People" />
+                <ScalarProperty Name="ID_Title" ColumnName="ID_Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Post">
+            <EntityTypeMapping TypeName="sportModel.Post">
+              <MappingFragment StoreEntitySet="Post">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sport_type">
+            <EntityTypeMapping TypeName="sportModel.Sport_type">
+              <MappingFragment StoreEntitySet="Sport_type">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="sportModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Team">
+            <EntityTypeMapping TypeName="sportModel.Team">
+              <MappingFragment StoreEntitySet="Team">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="City" ColumnName="City" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Title">
+            <EntityTypeMapping TypeName="sportModel.Title">
+              <MappingFragment StoreEntitySet="Title">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionName="Хранилище sportModel.Team_Enter" FunctionImportName="Team_Enter">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sportModel.Team_Enter_Result">
+                <ScalarProperty Name="Team" ColumnName="Team" />
+                <ScalarProperty Name="People_name" ColumnName="People name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="Хранилище sportModel.Work_Date" FunctionImportName="Work_Date">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sportModel.Work_Date_Result">
+                <ScalarProperty Name="People_Name" ColumnName="People Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Post" ColumnName="Post" />
+                <ScalarProperty Name="Sport" ColumnName="Sport" />
+                <ScalarProperty Name="Start_date" ColumnName="Start_date" />
+                <ScalarProperty Name="End_date" ColumnName="End_date" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SportStyle" FunctionName="Хранилище sportModel.SportStyle" />
+          <FunctionImportMapping FunctionImportName="TeamsName" FunctionName="Хранилище sportModel.TeamsName" />
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="sportModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище sportModel.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище sportModel.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище sportModel.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище sportModel.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sportModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище sportModel.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="sportModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище sportModel.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище sportModel.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

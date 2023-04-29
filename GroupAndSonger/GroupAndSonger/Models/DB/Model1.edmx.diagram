@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="88d0f06abb4d48b5b86bca66d4566ca8" Name="Diagram1" ZoomLevel="98">
+        <EntityTypeShape EntityType="subdcursa4Model.authors" Width="1.5" PointX="7.375" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="subdcursa4Model.buy_tick" Width="1.5" PointX="5.25" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="subdcursa4Model.country" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="subdcursa4Model.executor" Width="1.5" PointX="5.125" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="subdcursa4Model.group_executor" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="subdcursa4Model.groups" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="subdcursa4Model.places" Width="1.5" PointX="3" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="subdcursa4Model.repertoires" Width="1.5" PointX="11.625" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="subdcursa4Model.roles" Width="1.5" PointX="0.875" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="subdcursa4Model.songs" Width="1.5" PointX="9.625" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="subdcursa4Model.tour_songs" Width="1.5" PointX="9.5" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="subdcursa4Model.tours" Width="1.5" PointX="7.375" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="subdcursa4Model.users" Width="1.5" PointX="0.875" PointY="4.25" IsExpanded="true" />
+        <AssociationConnector Association="subdcursa4Model.FK__authors__ID_Exec__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="subdcursa4Model.FK__authors__ID_Song__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="subdcursa4Model.FK__buy_tick__ID_Pla__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="subdcursa4Model.FK__buy_tick__ID_Tou__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="subdcursa4Model.FK__groups__ID_Count__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="subdcursa4Model.FK__places__ID_Count__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="subdcursa4Model.FK__group_exe__ID_Ex__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="subdcursa4Model.FK__group_exe__ID_Gr__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="subdcursa4Model.FK__groups__ID_User__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="subdcursa4Model.FK__repertoir__ID_Gr__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="subdcursa4Model.FK__tours__ID_Group__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="subdcursa4Model.FK__repertoir__ID_So__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="subdcursa4Model.FK__users__ID_Role__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="subdcursa4Model.FK__tour_song__ID_So__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="subdcursa4Model.FK__tour_song__ID_To__47DBAE45" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

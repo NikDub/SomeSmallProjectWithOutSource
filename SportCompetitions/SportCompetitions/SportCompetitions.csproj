@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F6501766-1E92-4F10-8750-F41F29453E1A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>SportCompetitions</RootNamespace>
+    <AssemblyName>SportCompetitions</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Forms\Admin\PeopleAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Admin\PeopleAdd.Designer.cs">
+      <DependentUpon>PeopleAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AuthorizationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AuthorizationForm.Designer.cs">
+      <DependentUpon>AuthorizationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModelsForShow\AccidentShow.cs" />
+    <Compile Include="ModelsForShow\AchivmentsShow.cs" />
+    <Compile Include="ModelsForShow\CoachPeopleShow.cs" />
+    <Compile Include="ModelsForShow\CompetitionShow.cs" />
+    <Compile Include="ModelsForShow\Competition_ParticipantShow.cs" />
+    <Compile Include="ModelsForShow\DischargeShow.cs" />
+    <Compile Include="ModelsForShow\Person.cs" />
+    <Compile Include="ModelsForShow\PostPeopleShow.cs" />
+    <Compile Include="ModelsForShow\TeamShow.cs" />
+    <Compile Include="ModelsForShow\TitleShow.cs" />
+    <Compile Include="Model\Accident.cs">
+      <DependentUpon>SportDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Accident_People.cs">
+      <DependentUpon>SportDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Achivments.cs">
+      <DependentUpon>SportDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Coach.cs">
+      <DependentUpon>SportDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Competition.cs">
+      <DependentUpon>SportDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Competition_Participant.cs">
+      <DependentUpon>SportDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Discharge.cs">
+      <DependentUpon>SportDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Medal.cs">
+      <DependentUpon>SportDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\People.cs">
+      <DependentUpon>SportDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\People_Discharge.cs">
+      <DependentUpon>SportDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\People_Post.cs">
+      <DependentUpon>SportDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\People_Team.cs">
+      <DependentUpon>SportDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\People_Title.cs">
+      <DependentUpon>SportDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Post.cs">
+      <DependentUpon>SportDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SportDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SportDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SportDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SportDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SportDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SportDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Sport_type.cs">
+      <DependentUpon>SportDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>SportDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sp_helpdiagrams_Result.cs">
+      <DependentUpon>SportDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sysdiagrams.cs">
+      <DependentUpon>SportDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Team.cs">
+      <DependentUpon>SportDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Team_Enter_Result.cs">
+      <DependentUpon>SportDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Title.cs">
+      <DependentUpon>SportDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Users.cs">
+      <DependentUpon>SportDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Work_Date_Result.cs">
+      <DependentUpon>SportDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Admin\PeopleAdd.resx">
+      <DependentUpon>PeopleAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AuthorizationForm.resx">
+      <DependentUpon>AuthorizationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EntityDeploy Include="Model\SportDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SportDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\SportDB.edmx.diagram">
+      <DependentUpon>SportDB.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\SportDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SportDB.Context.cs</LastGenOutput>
+      <DependentUpon>SportDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="Model\SportDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SportDB.edmx</DependentUpon>
+      <LastGenOutput>SportDB.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

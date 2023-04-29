@@ -1,0 +1,106 @@
+Это Женя
+«Информационная система магазина отделочных материалов», которая содержит следующие сведения:
+− учёт поставщиков и поставок;
+		go
+		create procedure GetProvider as
+		begin
+			select a.Name, Count(b.Id_Provider) from Provider as a, Supply as b where b.Id_Provider = a.Id group by a.Name 
+		end
+
+		exec GetProvider
+
+- остаток товаров в определенном отделе;
+		go
+		create procedure GetSupMat 
+			@name NVARCHAR(Max)
+		as
+		begin
+			select z.Name, Sum(distinct b.Count)-Sum(a.Count) from Buy_Details as a, Supply as b, Unit as c, Materials as z where a.Id_Materials = b.Id_Materials and z.Id = a.Id_Materials and b.Id_Unit = c.Id and c.Name = @name group by z.Name
+		end
+
+		exec GetSupMat N'Напольные покрытия'
+				
+		
+− учтёт продаж по отделам;
+		select c.Name, Count(a.Id) from Buy_Details as a, Supply as b, Unit as c where a.Id_Materials = b.Id_Materials and b.Id_Unit = c.Id  group by c.Name
+		
+− подсчёт остатков товаров (по отделам);
+		select c.Name, Sum(distinct b.Count)-Sum(a.Count) from Buy_Details as a, Supply as b, Unit as c where a.Id_Materials = b.Id_Materials and b.Id_Unit = c.Id  group by c.Name
+
+− подведение финансовых итогов дня(по отделам);
+		select c.Name, Sum(d.Cost) from Buy_Details as a, Supply as b, Unit as c, buy as d where a.Id_Materials = b.Id_Materials and b.Id_Unit = c.Id and d.Id = a.Id_Buy and d.Date = CAST(GETDATE() AS DATE) group by c.Name
+		
+		go
+		CREATE FUNCTION FinDate (@DateS date)
+		RETURNS TABLE
+		AS RETURN (
+			select c.Name, Sum(d.Cost) as 'Sum'
+			from Buy_Details as a, Supply as b, Unit as c, buy as d 
+			where a.Id_Materials = b.Id_Materials and b.Id_Unit = c.Id and d.Id = a.Id_Buy and d.Date = CAST(@DateS AS DATE) group by c.Name
+		)
+		go
+
+		select * from FinDate('2022-11-09')
+
+− анализ результативности работы продавцов (для премирования);
+		select a.Name, a.Surname, a.Patronymic, Sum(b.Cost)	from Employee as a, Buy as b where a.Id = b.Id_Employee and year(b.Date) = year(GETDATE()) and month(b.Date) = month(GETDATE()) group by a.Name, a.Surname, a.Patronymic order by Sum(b.Cost) desc
+		
+− анализ обьёмов продаж по дням недели и по месяцам;
+		go
+		CREATE FUNCTION ValueDayORMonth (@Choose nvarchar(MAX))
+		RETURNS @result_table  Table(field1 nvarchar(max), field2 float)
+		AS 
+		begin
+			if @Choose = 'month'
+				insert into @result_table 
+				select  DATENAME(dw,b.Date), Sum(b.Cost) from Buy as b group by DATENAME(dw,b.Date) order by Sum(b.Cost) desc
+			else if @Choose = 'day'
+				insert into @result_table 
+				select  DATENAME(mm,b.Date), Sum(b.Cost) from Buy as b group by DATENAME(mm,b.Date) order by Sum(b.Cost) desc
+			
+			return;
+		end
+		go
+
+		select * from ValueDayORMonth('day')
+		
+Данная система будет иметь две подсистемы: подсистему администатора и сотрудника магазина отделочных материалов. Список полномочий администратора будет гораздо шире, чем у сотрудника. Так как администратор будет не только добавлять новые товары, но и отслеживать все результаты, отмечать даты поставок и управлять базой остатков товров.
+
+
+- триггер на добавление в заказ товара, менять цену заказа
+		go
+		create trigger update_buy_list
+		on Buy_details
+		AFTER insert, update, delete
+		as
+		begin
+			declare @id int;
+			declare @cost float;
+			Declare @cur1 Cursor;
+			set @cur1 = cursor scroll for select Id_Buy as 'id', sum(Cost) as 'cost' from Buy_Details group by Id_Buy;
+			open @cur1;
+			fetch next from @cur1 into @id, @cost;
+			while @@FETCH_STATUS = 0
+			begin
+				update Buy set Cost = @cost where id = @id
+				fetch next from @cur1 into @id, @cost;
+			end
+			close @cur1
+		end
+		
+- триггер на покупе больше товара чем оталось
+		go
+		create trigger add_buy_list
+		on Buy_details
+		FOR insert, update
+		as
+		begin
+			declare @count int
+			select @count = Sum(distinct b.Count)-Sum(a.Count) 
+			from Buy_Details as a, Supply as b, Unit as c 
+			where a.Id_Materials = b.Id_Materials and b.Id_Materials = (select i.Id_Materials from inserted as i) and b.Id_Unit = c.Id  
+			group by b.Id_Materials
+
+			if @count-(select i.Count from inserted as i) < 0
+				ROLLBACK TRANSACTION
+		end

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b1cdf7c4ff634536afa518822d61a8ac" Name="Diagram1" ShowGrid="true" DisplayType="true" ZoomLevel="101">
+        <EntityTypeShape EntityType="sportModel.Accident" Width="1.5" PointX="0.75" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="sportModel.Accident_People" Width="1.5" PointX="3" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="sportModel.Achivments" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="sportModel.Coach" Width="1.5" PointX="3" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="sportModel.Competition" Width="1.5" PointX="3.75" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="sportModel.Competition_Participant" Width="1.5" PointX="6" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="sportModel.Discharge" Width="1.5" PointX="0.75" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="sportModel.Medal" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="sportModel.People" Width="1.5" PointX="0.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="sportModel.People_Discharge" Width="1.5" PointX="3" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="sportModel.People_Post" Width="1.5" PointX="6" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="sportModel.People_Team" Width="1.5" PointX="6" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="sportModel.People_Title" Width="1.5" PointX="9" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="sportModel.Post" Width="1.5" PointX="3.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="sportModel.Sport_type" Width="1.5" PointX="3.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="sportModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sportModel.Team" Width="1.5" PointX="3.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sportModel.Title" Width="1.5" PointX="6.75" PointY="6.375" IsExpanded="true" />
+        <AssociationConnector Association="sportModel.FK_Accident_People_Accident" ManuallyRouted="false" />
+        <AssociationConnector Association="sportModel.FK_Accident_People_People" ManuallyRouted="false" />
+        <AssociationConnector Association="sportModel.FK_Achivments_Competition_Participant" ManuallyRouted="false" />
+        <AssociationConnector Association="sportModel.FK_Achivments_Medal" ManuallyRouted="false" />
+        <AssociationConnector Association="sportModel.FK_Achivments_People" ManuallyRouted="false" />
+        <AssociationConnector Association="sportModel.FK_Coach_People" ManuallyRouted="false" />
+        <AssociationConnector Association="sportModel.FK_Competition_Participant_Competition" ManuallyRouted="false" />
+        <AssociationConnector Association="sportModel.FK_Competition_Participant_People" ManuallyRouted="false" />
+        <AssociationConnector Association="sportModel.FK_Competition_Participant_Team" ManuallyRouted="false" />
+        <AssociationConnector Association="sportModel.FK_People_Discharge_Discharge" ManuallyRouted="false" />
+        <AssociationConnector Association="sportModel.FK_People_Discharge_People" ManuallyRouted="false" />
+        <AssociationConnector Association="sportModel.FK_People_Post_People" ManuallyRouted="false" />
+        <AssociationConnector Association="sportModel.FK_People_Team_People" ManuallyRouted="false" />
+        <AssociationConnector Association="sportModel.FK_People_Title_People" ManuallyRouted="false" />
+        <AssociationConnector Association="sportModel.FK_People_Discharge_Sport_type" ManuallyRouted="false" />
+        <AssociationConnector Association="sportModel.FK_People_Post_Post" ManuallyRouted="false" />
+        <AssociationConnector Association="sportModel.FK_People_Post_Sport_type" ManuallyRouted="false" />
+        <AssociationConnector Association="sportModel.FK_People_Team_Team" ManuallyRouted="false" />
+        <AssociationConnector Association="sportModel.FK_People_Title_Sport_type" ManuallyRouted="false" />
+        <AssociationConnector Association="sportModel.FK_People_Title_Title" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="sportModel.Users" Width="1.5" PointX="3.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
